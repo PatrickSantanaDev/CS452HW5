@@ -1,0 +1,10 @@
+#!/bin/bash
+
+prg=./Test
+
+for t in Test_* ; do
+    echo ${t##*/}
+    mapfile -t <$t/args
+    $prg "${MAPFILE[@]}" <$t/inp 2>&1 >$t/out
+    diff -q -w $t/exp $t/out 2>&1 >/dev/null || echo ${t##*/} failed >&2
+done

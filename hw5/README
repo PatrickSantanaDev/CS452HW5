@@ -1,0 +1,27 @@
+HW5 - CS452 
+Author: Patrick Santana
+
+The device driver is a basic scanner that separates text based on specific character delimiters. The process involves interactions with the device driver via read and write operations. Writing data results in the storage of information within kernel memory, while reading data entails the segmentation of the input into tokens, which are subsequently conveyed to a buffer provided by the user.
+
+Incorporating a modified version of the shell script from HW3, this scanner introduces a basic testing suite. Notably, adaptations have been made to the script to accommodate the inclusion of an additional file named 'args.' This 'args' file serves as a mechanism to transmit separator specifications to each unique test execution. It's worth noting that 'DEFAULT' functions as a reserved argument, signifying that the test will employ the scanner's default parameters. The remainder of the suite maintains the same procedures as HW3, employing 'inp' for stdin redirection and conducting comparisons between 'exp' and output files.
+
+To opt for the default set of separators, simply input 'DEFAULT' on the initial line of the file, ensuring there are no subsequent line breaks. If you prefer to employ a custom set of separators, you can follow a two-step process. Firstly, on the first line, specify the specific character set you intend to utilize. Subsequently, on the second line, indicate the quantity of characters contained within the argument you are providing. For example, ':' signifies the designation of a separator. Additionally, 1 indicates that there is a single separator in use.
+
+Ex:
+:
+1
+
+USAGE:
+
+To load/run the driver:
+
+$ make          # compile driver
+$ make install  # install driver into kernel memory
+$ make try      # run and compile TryScanner exe
+
+To execute the test suite, ensure that you have successfully installed the driver by following the previously mentioned steps. 
+After that, navigate to the main directory and proceed as follows:
+
+$ make Testing  # compile test suite
+$ cd Testing    # enter test suite directory 
+$ ./run         # run test suite
